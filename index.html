@@ -1,5 +1,31 @@
+<!-- Credit to Kent Dodds for his video on React -->
+
 <html>
-    <body>
-        <div id="root">Placeholder!</div>
-    </body>
+  <body>
+    <h1>
+      <span>Span!</span>
+    </h1>
+    <div id="root"></div>
+  </body>
+  <script>
+    const rootEl = document.getElementById("root");
+    function createElement(type, attributes, ...children) {
+      const element = document.createElement(type);
+      Object.entries(attributes).forEach(([key, value]) => {
+        element.setAttribute(key, value);
+      });
+      children.forEach(child => {
+        element.appendChild(child);
+      });
+      return element;
+    }
+    const spanElement = createElement("span", {}, "SPAN");
+    const element = createElement(
+      "h1",
+      { id: "header" },
+      "hey there",
+      spanElement
+    );
+    rootEl.appendChild(element);
+  </script>
 </html>
